@@ -9,12 +9,20 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var redSignal: UIView!
+    @IBOutlet weak var yellowSignal: UIView!
+    @IBOutlet weak var greenSignail: UIView!
+    @IBOutlet weak var startButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func startButtonPress() {
+    }
+    
 }
 
