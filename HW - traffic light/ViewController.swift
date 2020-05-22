@@ -15,22 +15,26 @@ class ViewController: UIViewController {
     @IBOutlet weak var greenSignail: UIView!
     @IBOutlet weak var startButton: UIButton!
     
+    private var lightStatus = 0
+    private let lightIsOn: CGFloat = 1
+    private let lightIsOff: CGFloat = 0.3
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        redSignal.layer.cornerRadius = 50
-        yellowSignal.layer.cornerRadius = 50
-        greenSignail.layer.cornerRadius = 50
-        
-        redSignal.alpha = 0.3
-        yellowSignal.alpha = 0.3
-        greenSignail.alpha = 0.3
-        
         
         startButton.layer.cornerRadius = 10
+        
+        redSignal.alpha = lightIsOff
+        yellowSignal.alpha = lightIsOff
+        greenSignail.alpha = lightIsOff
+        
     }
-    
-    var lightStatus = 0
+    override func viewWillLayoutSubviews() {
+        
+        redSignal.layer.cornerRadius = redSignal.frame.width / 2
+        yellowSignal.layer.cornerRadius = yellowSignal.frame.width / 2
+        greenSignail.layer.cornerRadius = redSignal.frame.width / 2
+    }
     
     @IBAction func startButtonPress() {
         startButton.setTitle("NEXT", for: .normal)
@@ -38,20 +42,20 @@ class ViewController: UIViewController {
         switch lightStatus {
             
         case 0:
-            redSignal.alpha = 1
-            yellowSignal.alpha = 0.3
-            greenSignail.alpha = 0.3
+            redSignal.alpha = lightIsOn
+            yellowSignal.alpha = lightIsOff
+            greenSignail.alpha = lightIsOff
             lightStatus += 1
             
         case 1:
-            redSignal.alpha = 0.3
-            yellowSignal.alpha = 1
+            redSignal.alpha = lightIsOff
+            yellowSignal.alpha = lightIsOn
             lightStatus += 1
             
         case 2:
-            redSignal.alpha = 0.3
-            yellowSignal.alpha = 0.3
-            greenSignail.alpha = 1
+            redSignal.alpha = lightIsOff
+            yellowSignal.alpha = lightIsOff
+            greenSignail.alpha = lightIsOn
             lightStatus = 0
             
         default:
